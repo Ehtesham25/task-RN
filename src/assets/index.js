@@ -13,6 +13,8 @@ import car2 from './car2.png';
 import car3 from './car3.png';
 import map from './map.png';
 import name from './name.png';
+import cart from './cart.png';
+import search from './search.png';
 
 export const images = {
   landing,
@@ -30,4 +32,6 @@ export const images = {
   car3,
   map,
   name,
+  cart,
+  search,
 };
