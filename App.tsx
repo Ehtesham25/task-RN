@@ -6,11 +6,13 @@ import Items from './src/screens/Items';
 
 export default function App() {
   const [items, setItems] = React.useState();
+  const [cartItems, seCartItems] = React.useState([]);
 
   const getData = async () => {
-    const data = await axios.get('https://dummyjson.com/carts');
+    const data: any = await axios.get('https://dummyjson.com/carts');
     setItems(data);
   };
+
   React.useEffect(() => {
     fetch('https://dummyjson.com/carts')
       .then(data => data.json())
@@ -21,7 +23,7 @@ export default function App() {
 
   return (
     <>
-      <Items data={items} />
+      <Items data={items} cartItems={cartItems} setCartItems={seCartItems} />
     </>
   );
 }
