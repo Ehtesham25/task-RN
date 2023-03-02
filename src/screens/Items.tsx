@@ -15,8 +15,13 @@ import {images} from '../assets';
 
 interface props {
   data: any;
+  cartItems: any;
+  setCartItems: any;
 }
-const Items: React.FC<props> = ({data}) => {
+const Items: React.FC<props> = ({data, cartItems, setCartItems}) => {
+  const addToCart = (item: any) => {
+    setCartItems([...cartItems, item]);
+  };
   return (
     <Box full bg="white">
       <Box row between pad={`${wp(15)}px 0 0 ${wp(10)}px}`}>
@@ -28,18 +33,17 @@ const Items: React.FC<props> = ({data}) => {
             Favourite Plant
           </MyText>
         </Box>
-        <Box>
+        <Box mar={`0 ${wp(3)}px 0 0 `}>
           <Box
-            mar={`0 ${wp(4)}px 0 0 `}
             wd={wp(5)}
             ht={wp(5)}
             hasRadius={50}
             absolute
             centerAll
-            top={-9}
-            right={2}
+            top={-11}
+            right={-2}
             bg="orange">
-            <MyText>0</MyText>
+            <MyText>{cartItems?.length | 0}</MyText>
           </Box>
           <Icon src={images.cart} />
         </Box>
@@ -79,12 +83,13 @@ const Items: React.FC<props> = ({data}) => {
                 <Image source={images.car2} style={styles.image} />
                 <Box row between wd={wp(38)}>
                   <Box>
-                    <MyText bold>title</MyText>
+                    <MyText bold>{item.products[0].title.split(' ')[0]}</MyText>
                     <MyText fs={RFValue(16)}>
-                      $6.50 <MyText>$900</MyText>
+                      ${item.products[0].price}{' '}
+                      <MyText>${item.products[0].price}</MyText>
                     </MyText>
                   </Box>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => addToCart(item)}>
                     <Icon src={images.cart} />
                   </TouchableOpacity>
                 </Box>
