@@ -16,9 +16,17 @@ import {images} from '../assets';
 interface props {
   data: any;
   cartItems: any;
-  setCartItems: any;
+  setCartItems: React.Dispatch<React.SetStateAction<any>>;
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
 }
-const Items: React.FC<props> = ({data, cartItems, setCartItems}) => {
+const Items: React.FC<props> = ({
+  data,
+  cartItems,
+  setCartItems,
+  search,
+  setSearch,
+}) => {
   const addToCart = (item: any) => {
     setCartItems([...cartItems, item]);
   };
@@ -49,7 +57,12 @@ const Items: React.FC<props> = ({data, cartItems, setCartItems}) => {
         </Box>
       </Box>
       <Box relative>
-        <TextInput placeholder="search here" style={styles.input} />
+        <TextInput
+          value={search}
+          onChangeText={e => setSearch(e)}
+          placeholder="search here"
+          style={styles.input}
+        />
         <Box
           centerAll
           wd={wp(11)}
@@ -111,7 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#a1a1a119',
     margin: wp(3),
     borderRadius: 15,
-    color: '#fff',
+    color: '#000',
   },
   shadow: {
     backgroundColor: '#a1a1a119',
