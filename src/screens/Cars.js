@@ -85,7 +85,6 @@ const Cars = ({navigation}) => {
 };
 
 export default Cars;
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#32baa577',
