@@ -9,10 +9,10 @@ import {
 } from 'react-native';
 import React from 'react';
 import {RFValue} from 'react-native-responsive-fontsize';
-
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {Box, Icon, Input, MyText} from '../components';
 
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+
 import {images} from '../assets';
 
 interface props {
